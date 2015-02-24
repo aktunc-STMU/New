@@ -3,33 +3,29 @@ import java.util.Scanner;
 public class Mersenne {
 	public static void main(String[] args)
 	{
-		int n, count = 0, num = 3;
+		int n, count = 0;
 		
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("Enter a number. The system will find the Mersenne prime numbers smaller than this number");
 		n = scan.nextInt();
 		System.out.println("These are the Mersenne prime numbers smaller than " +n+ ":\n");
-		for(int h = 1; h < n;)
+		for(int h = 2; h < n;h++)
 		{
-			for ( int j = 2 ; j <= Math.sqrt(num) ; j++ )
-			{
-				if (num%j == 0)
-				{
+				int mersenne = (int) (Math.pow(2, h))-1;
+				if(mersenne>n)
 					break;
-				}
-			
-				int mersenne = (int)(Math.pow(2, j))-1;
-				if(mersenne == num)
+				for(int j = 2; j < Math.sqrt(mersenne); j++)
 				{
-					System.out.println(num+ "  ");
+					if(mersenne%j==0)
+						break;
+					System.out.println(mersenne+ "  ");
 					count++;
 				}
-				num++;
+				
+				
+				
 			
-			}
-			if(n < num)
-				break;
 		}
 		System.out.println("\n\nThere are a total of "+count+" Mersenne prime numbers");
 	}
